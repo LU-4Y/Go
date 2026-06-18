@@ -1,5 +1,5 @@
 from classes import Pieces, Board
-import string
+import string #still needed?
 import re
 
 def main():
@@ -25,6 +25,7 @@ def main():
     p = Pieces()
     quit_state = False #if the primary game loop reaches its conclusion and this variable is True, the program terminates
     current_turn = p.w #white goes first
+    k = 1
 
     ##Primary game loop
     while quit_state == False:
@@ -44,19 +45,36 @@ def main():
                 print("C2 - Play the current piece at spot C2.")
                 print("P - Pass the current turn.")
                 print("Q - Quit the game. WARNING: GAME SAVING NOT YET IMPLEMENTED!")
-        except:
-            print_commands = False  
+        finally:
+            print_commands = False
+        
+        try:
+            if k == 0:
+                print("That was an invalid move.  Please try again.")
+        finally:
+            k = 1
 
         #ask user for input
-        print_commands = False  #this line is important for second and subsequent loop through the program
         print("Issue a '?' to list all possible commands.")
         user_action = input("Issue a command: ")
         user_action = re.sub('\s','',user_action) #eliminate white space in the submitted action.
+        user_action = re.sub('\W','',user_action) #eliminate non-letter/number characters (does this include white space?  If yes, previous line is redundant.)
+
+        #take action based on input
         if user_action == '?':
             print_commands = True
             continue
-
-
+        elif user_action == 'P':
+            if current_turn == p.b:
+                current_turn = p.w
+            elif current_turn == p.w:
+                current_turn = p.b
+            continue
+        elif user_action == 'Q':
+            break
+        else:
+            place = [current_turn, user_action]
+            k = current_board.place_piece(place)
 
 ##Ensure the program only runs when executed directly from the terminal
 import os

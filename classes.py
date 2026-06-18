@@ -40,7 +40,7 @@ class Board:
         coord = place[1].upper() #upper() ensures compatability with Board.key dict
         #unpack place variable
 
-        k = int(0) #initialization within method. This variable will determine whether the turn moves forward or not.  k=0 is returned from this method if something is wrong, k=1 is returned from this method if a piece is successfully played on the board.
+        k = int(0) #initialization within method. This variable will determine whether the turn moves forward or not.  k=0 is returned from this method if something is wrong, k=1 is returned from this method if a piece is successfully played on the board, and subsequent logic is executed.
 
         coord = self.key[coord] #convert coord to layout parameters
 

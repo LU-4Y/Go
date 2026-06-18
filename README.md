@@ -21,10 +21,10 @@ Version 3.0 Project requirements:
     >   Implemented GUI  
     >   P2P over LAN  
   
-==========================================  
-==========================================  
+==========================================
+==========================================
 
-29MAR2026
+29MAR2026  
 Notes on connecting pieces for capture and point logic.
 When pieces are on a board, they intrinsically "connect" to adjacent pieces.  I will need to write an algorithm to determine the contiguous bodies on the board.  The way I am thinking of tackling that right now is using a "growing tree" model.  
 
